@@ -1,0 +1,33 @@
+<h2 mat-dialog-title>{{data.empleado ? 'Editar' : 'Nuevo'}} Empleado</h2>
+<mat-dialog-content [formGroup]="form">
+  <mat-form-field appearance="fill" style="width:100%">
+    <mat-label>Nombre</mat-label>
+    <input matInput formControlName="nombre">
+  </mat-form-field>
+  <mat-form-field appearance="fill" style="width:100%">
+    <mat-label>Apellido Paterno</mat-label>
+    <input matInput formControlName="apellidoPaterno">
+  </mat-form-field>
+  <mat-form-field appearance="fill" style="width:100%">
+    <mat-label>Apellido Materno</mat-label>
+    <input matInput formControlName="apellidoMaterno">
+  </mat-form-field>
+  <mat-form-field appearance="fill" style="width:100%">
+    <mat-label>Edad</mat-label>
+    <input matInput type="number" formControlName="edad">
+  </mat-form-field>
+  <mat-form-field appearance="fill" style="width:100%">
+    <mat-label>Puesto</mat-label>
+    <input matInput formControlName="puesto">
+  </mat-form-field>
+  <mat-form-field appearance="fill" style="width:100%">
+    <mat-label>Departamento</mat-label>
+    <mat-select formControlName="departamentoId">
+      <mat-option *ngFor="let d of departamentos" [value]="d.id">{{d.nombre}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button (click)="close()">Cancelar</button>
+  <button mat-flat-button color="primary" (click)="save()">Guardar</button>
+</mat-dialog-actions>

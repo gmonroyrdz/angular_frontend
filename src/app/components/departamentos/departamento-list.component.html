@@ -1,0 +1,36 @@
+<mat-card>
+  <mat-card-title>Departamentos</mat-card-title>
+  <mat-card-content>
+    <div style="margin-bottom:12px">
+      <button mat-flat-button color="primary" (click)="openCreate()">Nuevo departamento</button>
+    </div>
+    <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8" style="width:100%">
+
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>ID</th>
+        <td mat-cell *matCellDef="let d">{{d.id}}</td>
+      </ng-container>
+      <ng-container matColumnDef="nombre">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Nombre</th>
+        <td mat-cell *matCellDef="let d">{{d.nombre}}</td>
+      </ng-container>
+      <ng-container matColumnDef="direccion">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Dirección</th>
+        <td mat-cell *matCellDef="let d">{{d.direccion}}</td>
+      </ng-container>
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef>Acciones</th>
+        <td mat-cell *matCellDef="let d">
+          <button mat-icon-button color="primary" title="Consultar" (click)="view(d.id)"><mat-icon>visibility</mat-icon></button>
+          <button mat-icon-button color="primary" (click)="edit(d)"><mat-icon>edit</mat-icon></button>
+          <button mat-icon-button color="warn" (click)="delete(d.id)"><mat-icon>delete</mat-icon></button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+    <mat-paginator [pageSizeOptions]="[5,10,25]" showFirstLastButtons></mat-paginator>
+  </mat-card-content>
+</mat-card>
